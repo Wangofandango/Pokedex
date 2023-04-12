@@ -40,7 +40,7 @@ function StartWithUpperCase(str) {
 
 export default function PokemonOverview({ pokemon }) {
     return (
-        <div sy>
+        <div>
             {pokemon.map(p => (
                 <div className="SpecificPokemon" key={p.name} style={{
                     width: "15%",
