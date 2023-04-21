@@ -1,0 +1,4 @@
+.main {
+    /* Make the items response to screen size*/
+    display: flex;
+}

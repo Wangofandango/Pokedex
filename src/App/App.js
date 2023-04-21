@@ -1,8 +1,10 @@
+import './App.css';
 import React, { useState, useEffect } from 'react';
 import PokemonOverview from '../PokemonOverview/PokemonOverview';
 import axios from 'axios';
 import Pagination from '../Pagination/Pagination';
-import { Link, Outlet } from 'react-router-dom';
+import PokemonSpotlight from '../PokemonSpotlight/PokemonSpotlight';
+
 
 
 function App() {
@@ -10,8 +12,9 @@ function App() {
   const [currentPageUrl, setCurrentPageUrl] = useState('https://pokeapi.co/api/v2/pokemon')
   const [nextPageUrl, setNextPageUrl] = useState()
   const [prevPageUrl, setPrevPageUrl] = useState()
-
   const [loading, setLoading] = useState(true)
+
+  const [specificPokemonId, setSpecificPokemonId] = useState(null);
 
   useEffect(() => {
     setLoading(true)
@@ -36,7 +39,7 @@ function App() {
             weight: response.data.weight,
             height: response.data.height,
             types: response.data.types,
-            order: response.data.order,
+            id: response.data.id,
             sprites: response.data.sprites
           }))
         )
@@ -63,14 +66,22 @@ function App() {
 
 
 
+
   if (loading) return "Loading..."
 
 
   return (
     <>
 
+      <h1>Pokemon</h1>
+      <h2>Click on a pokemon to see more details</h2>
+      <div class="main">
+        <PokemonOverview pokemon={pokemon} setSpecificPokemonId={setSpecificPokemonId} />
 
-      <PokemonOverview pokemon={pokemon} />
+        <PokemonSpotlight specificPokemonId={specificPokemonId} />
+
+      </div>
+
       <Pagination
         goToNextPage={nextPageUrl ? goToNextPage : null}
         goToPrevPage={prevPageUrl ? goToPrevPage : null}

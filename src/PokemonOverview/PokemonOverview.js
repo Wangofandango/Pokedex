@@ -1,5 +1,6 @@
 import React from 'react'
 import styles from './PokemonOverview.modules.css'
+import { startWithUpperCase } from '../Utils'
 
 function getColorsFromType(Types) {
     Types = Types.map(t => t.type.name)
@@ -33,35 +34,34 @@ function getColorsFromType(Types) {
     return colors[Types];
 }
 
-function StartWithUpperCase(str) {
-    return str[0].toUpperCase() + str.slice(1)
-}
 
 
-export default function PokemonOverview({ pokemon }) {
+
+export default function PokemonOverview({ pokemon, setSpecificPokemonId }) {
     return (
-        <div>
+        <div className='Overview'>
             {pokemon.map(p => (
-                <div className="SpecificPokemon" key={p.name} style={{
-                    width: "15%",
-                    height: "20%",
-                    //Make the divs be able to be in the same row
-                    display: "inline-block",
-                    //Make the divs have a margin
-                    margin: "10px",
-                    //Make the divs have a border
-                    border: "1px solid black",
-                    //Make the divs have a border radius
-                    borderRadius: "10px",
+                <div className="SpecificPokemon" key={p.id} onClick={() => setSpecificPokemonId(p.id)}
+                    style={{
+                        width: "15%",
+                        height: "20%",
+                        //Make the divs be able to be in the same row
+                        display: "inline-block",
+                        //Make the divs have a margin
+                        margin: "5px",
+                        //Make the divs have a border
+                        border: "1px solid black",
+                        //Make the divs have a border radius
+                        borderRadius: "10px",
 
-                    background: getColorsFromType(p.types)
+                        background: getColorsFromType(p.types)
+                            
+
+                    }} >
 
 
-                }} >
-
-
-                    <h1>{StartWithUpperCase(p.name)}</h1>
-                    <h2>#{p.order} </h2>
+                    <h1>{startWithUpperCase(p.name)}</h1>
+                    <h2>#{p.id} </h2>
 
                     {/*Make the image appear in the bottom right corner of the div */}
 
