@@ -39,12 +39,7 @@
 }
 
 .type {
-    /*give a margin, 
-    and a rounded border, 
-    border being black,
-    And a padding 
-    Make all text inside of it have a black border with white insides,
-    And make it in all caps*/
+    
     margin: 0 5px;
     border-radius: 5px;
     border: 1px solid black;
