@@ -48,8 +48,8 @@ export default function PokemonSpotlight({ specificPokemonId }) {
         <h1>{startWithUpperCase(specificPokemon.name)}</h1>
         <h2>#{specificPokemon.id}</h2>
         <img src={specificPokemon.sprites.front_default} alt="Billede af pokemon"></img>
-        <h3>Weight: {specificPokemon.weight}</h3>
-        <h3>Height: {specificPokemon.height}</h3>
+        <h3>Weight: {specificPokemon.weight/10}kg</h3>
+        <h3>Height: {specificPokemon.height/10}m</h3>
         <h3>Types: <br />
             <div id='typeContainer'>
                 {specificPokemon.types.map(t => <div className='type' id={t.type.name}>{t.type.name} </div>)}
