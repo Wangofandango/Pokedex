@@ -1,5 +1,5 @@
-#Link to Github pages:
-
+# Link to Github pages:
+## https://wangofandango.github.io/Pokedex/
 
 # Getting Started with Create React App
 
